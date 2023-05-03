@@ -1,0 +1,6 @@
+{
+    "presets": [
+        "@babel/preset-env", //Para que babel entienda emacscript, javascript   
+        "@babel/preset-react" //para que babel entienda react
+    ]
+}
