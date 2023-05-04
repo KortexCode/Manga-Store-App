@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    entry: "./src/index.jsx", //punto de entrada del proyecto
+    entry: "./src/index.tsx", //punto de entrada del proyecto
     output: { //punto de salida del proyecto optimizado y terminado
         path: path.resolve(__dirname, "dist"),
         filename:"[name].[contenthash].js", //nombre del archivo optimizado(el index.js)
@@ -14,21 +14,21 @@ module.exports = {
     mode:"development",
     devtool:"source-map",
     resolve: {//Con que extensiones va a trabajar webpack
-        extensions:[".js", ".jsx"],
+        extensions:[".js", ".jsx", ".ts", ".tsx"],
         alias: {
-            "@components": path.resolve(__dirname, "src/components"),
-            "@styles": path.resolve(__dirname, "src/styles"),
-            "@containers": path.resolve(__dirname, "src/containers"),
-            "@utils": path.resolve(__dirname, "src/utils"),
-            "@images": path.resolve(__dirname, "src/assets"),
-            "@slices": path.resolve(__dirname, "src/slices"),
-            "@hooks": path.resolve(__dirname, "src/hooks"),
+            "components": path.resolve(__dirname, "src/components"),
+            "styles": path.resolve(__dirname, "src/styles"),
+            "containers": path.resolve(__dirname, "src/containers"),
+            "utils": path.resolve(__dirname, "src/utils"),
+            "images": path.resolve(__dirname, "src/assets"),
+            "slices": path.resolve(__dirname, "src/slices"),
+            "hooks": path.resolve(__dirname, "src/hooks"),
         }
     },
     module: {
         rules: [
             {
-                test:/\.(js|jsx)$/,
+                test:/\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
                 use:{
                     loader: "babel-loader"
@@ -42,7 +42,7 @@ module.exports = {
             },
             {
                 test:/\.(css|scss)$/,
-                use: [ MiniCssExtractPlugin.loader, "css-loader" ],  
+                use: [ MiniCssExtractPlugin.loader, "css-loader", 'sass-loader' ],  
             },
             {
                 test:/\.(png|svg|jpg|gif)$/,
