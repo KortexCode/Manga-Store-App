@@ -1,6 +1,6 @@
-import { Footer } from '@/components/Footer';
-import { Header } from '@/components/Header';
-import React, { Children } from 'react';
+import React from 'react';
+import { Footer } from '../components/Footer';
+import { Header } from '../components/Header';
 
 type Props = {
 	children: JSX.Element;
