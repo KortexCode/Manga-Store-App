@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 function App() {
-	useEffect(() => {
+	/* useEffect(() => {
 		async function query() {
 			const response = await fetch('https://api.jikan.moe/v4/manga');
 			const data = await response.json();
@@ -9,6 +9,7 @@ function App() {
 		}
 		query();
 	});
+ */
 	return <h1>Hola chikorita</h1>;
 }
 
