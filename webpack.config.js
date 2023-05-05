@@ -22,15 +22,9 @@ module.exports = {
     devtool:"source-map",
     resolve: {//Con que extensiones va a trabajar webpack
         extensions:[".js", ".jsx", ".ts", ".tsx"],
-        alias: {
-            "components": path.resolve(__dirname, "src/components"),
-            "styles": path.resolve(__dirname, "src/styles"),
-            "@containers": path.resolve(__dirname, "src/containers"),
-            "utils": path.resolve(__dirname, "src/utils"),
-            "images": path.resolve(__dirname, "src/assets"),
-            "hooks": path.resolve(__dirname, "src/hooks"),
-            "pages": path.resolve(__dirname, "src/pages"),
-        }
+        /* alias: {
+            '@': path.resolve(__dirname, 'src/'),
+        } */
     },
     module: {
         rules: [
