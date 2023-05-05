@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './routes/App';
-import '@/styles/main.css';
+import './styles/main.css';
 
 const x = false;
 console.log('hola', x);

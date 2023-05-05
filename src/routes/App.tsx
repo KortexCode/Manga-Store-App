@@ -9,15 +9,6 @@ import { Information } from '../pages/Information';
 import { Layout } from '../containers/Layout';
 
 function App(): JSX.Element {
-	/* useEffect(() => {
-		async function query() {
-			const response = await fetch('https://api.jikan.moe/v4/manga');
-			const data = await response.json();
-			console.log('res', data);
-		}
-		query();
-	});
- */
 	return (
 		<HashRouter>
 			<Layout>
