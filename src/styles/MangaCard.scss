@@ -1,0 +1,25 @@
+@import './vars';
+
+.MangaCard {
+    width: 250px;
+    height: auto;
+}
+.MangaCard__img{
+    width: 100%;
+    height: 300px;
+
+}
+.MangaCard__description-container{
+    width: 100%;
+    height: auto;
+}
+
+.MangaCard__title{
+    font-size: $lg;
+    font-weight: 700;
+}
+
+.MangaCard__rank{
+    font-size: $lg;
+    font-weight: 700;
+}

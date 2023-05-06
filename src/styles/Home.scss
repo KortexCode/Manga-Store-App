@@ -20,8 +20,11 @@
         font-size: 50px;
         font-weight: 700;  
         color: rgb(255, 238, 5); 
-        -webkit-text-stroke-width: 1.3px;
-        -webkit-text-stroke-color: black;
+        text-shadow: 1px  1px 0   #F00,
+        -1px -1px 0   #F00,
+         1px -1px 0   #F00,
+        -1px  1px 0   #F00,
+         3px  3px 5px #333;
         z-index: 2;
     }
     &__title-message{
@@ -29,8 +32,11 @@
         font-size: $xl;
         font-weight: 500;
         color: rgb(247, 217, 52);
-        -webkit-text-stroke-width: 1.3px;
-        -webkit-text-stroke-color: black;
+        text-shadow: 1px  1px 0   #F00,
+        -1px -1px 0   #F00,
+         1px -1px 0   #F00,
+        -1px  1px 0   #F00,
+         3px  3px 5px #333;
         z-index: 2;
     }
     &__title-section-img {
@@ -41,6 +47,19 @@
         object-fit: cover;
         z-index: 0;
       
+    }
+    &__manga-section {
+        width: 90%;
+        height: auto;
+        margin: 0 auto; 
+        margin-top: 40px;
+    }
+    &__manga-container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 250px);
+        justify-content: center;
+        gap: 12px;
     }
 }
 .overlay--gray-scale{
