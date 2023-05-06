@@ -1,5 +1,5 @@
 import React from 'react';
-import { Datum } from '../constants/mangas';
+import { Datum } from '../constants/types/mangas';
 
 type Props = {
 	item: Datum | null;

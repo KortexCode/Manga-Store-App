@@ -37,6 +37,7 @@ module.exports = {
       { allow: ['|'] },
     ],
     'no-tabs': [
-      'error', { allowIndentationTabs: true }],
+      'error', { allowIndentationTabs: true }
+    ],   
   },
 };

@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { MangaCard } from '../components/MangaCard';
-import { Datum, Manga } from '../constants/mangas';
+import { Datum, Manga } from '../constants/types/mangas';
 import colladImg from '../assets/collad_.jpg';
 import '../styles/Home.scss';
 
 function Home(): JSX.Element {
 	const [mangaData, setMangaData] = useState<Manga | null>(null);
-	console.log('render');
 	useEffect(() => {
 		async function query(): Promise<void> {
 			const response = await fetch('https://api.jikan.moe/v4/manga');
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			const resData: Manga = await response.json();
 			console.log('res', resData);
 			setMangaData(resData);
 		}
-		query();
+		query().catch(e => {
+			console.error(e);
+		});
 	}, []);
 
 	return (

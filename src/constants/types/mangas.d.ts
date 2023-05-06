@@ -31,7 +31,7 @@ export interface Datum {
     authors:         Author[];
     serializations:  Author[];
     genres:          Author[];
-    explicit_genres: string[];
+    explicit_genres: unknown[];
     themes:          Author[];
     demographics:    Author[];
 }
