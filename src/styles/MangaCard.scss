@@ -1,25 +1,67 @@
 @import './vars';
-
+/* rgb(250, 30, 1) */
+/* rgb(145, 17, 0) */
 .MangaCard {
     width: 250px;
     height: auto;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 2px 2px 3px black;
+    background-color: $secondary;   
 }
 .MangaCard__img{
     width: 100%;
-    height: 300px;
-
+    height: 320px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px; 
+    
+}
+.MangaCard__footer{
+    width: 100%;
+    display: flex;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    flex-direction: column;
+    
 }
 .MangaCard__description-container{
     width: 100%;
     height: auto;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    
 }
-
 .MangaCard__title{
+    padding: 4px;
     font-size: $lg;
     font-weight: 700;
+    color: black;
+    text-align: center;
+}
+.MangaCard__status{
+    @include cards-description;
+    justify-self: end;
+}
+.MangaCard__gender{
+    @include cards-description;
+}
+.MangaCard__rank{
+    @include cards-description;
+}
+.MangaCard__checkout{
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-items: center;
+}
+.MangaCard__checkout-price{
+    font-size: $lg;
+    font-weight: 500;
 }
 
-.MangaCard__rank{
-    font-size: $lg;
-    font-weight: 700;
-}
+
