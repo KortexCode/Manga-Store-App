@@ -1,13 +1,25 @@
 @import './vars';
 
 .Checkout__item{
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding-top: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
+}
+.Checkout__item-name{
+    font-size: $sm;
+    font-weight: 400;
 }
 .Checkout__item-price-container{
     display: flex;
     align-items: center;
-
+}
+.Checkout__item-price{
+    margin-right: 8px;
+    font-size: $md;
+    font-weight: 500;
 }
 

@@ -7,7 +7,9 @@ function Header(): JSX.Element {
 			<nav className='Header__nav'>
 				<span className='Header__title'>Manga Hakken</span>
 				<ul>
-					<li>Caterory</li>
+					<li>Home</li>
+					<li>Contact</li>
+					<li>About us</li>
 				</ul>
 				<div>
 					<p>Checkout</p>
