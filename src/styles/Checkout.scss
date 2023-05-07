@@ -3,16 +3,14 @@
 .Checkout{
     width: 100%;
     height: 100vh;
-    padding: 80px 0px 20px 0px;
-    background-image: linear-gradient(to top, #ffd750, #ffdb53, #fedf57, #fee35a, #fde75e);
-    /* background-image: linear-gradient(to top, #ffd750, #fdd744, #fcd735, #f9d723, #f7d700); */
+    padding-top: 60px;
+    background-color: rgba(187, 187, 187, 0.979);
 }
 .Checkout__orders-container{
-    width: 90%;
-    height: 80vh;
+    width: 100%;
+    height: calc(100vh - 60px);
     padding: 12px 16px 0px;
     margin: 0 auto;
-    border-radius: 8px;
     box-shadow: 0 0 4px black;
     display: grid;
     grid-template-rows: 30px 1fr;
@@ -30,37 +28,65 @@
     padding-left: 8px;
     padding-top: 8px;
     border-radius: 8px;
-    box-shadow: 0 0 4px #e7e7e7d2;
+   /*  box-shadow: 0 0 4px #e7e7e7d2; */
     display: flex;
     flex-direction: column;
-    background-color: #e7e7e7d2;
+ /*    background-color: #e7e7e7d2; */
     overflow-y: scroll;
     
 }
 .Checkout__purchase-container{
     justify-self: center;
 }
-.Checkout__total{
-    padding: 12px 0 8px 0;
+.Checkout__total-container{
+    padding:16px;
+    margin: 8px 0 8px 0;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    background-color: #e7e7e7d2; 
+}
+.Checkout__total-container span{
     font-size: $lg;
     font-weight: 500;
-
+    justify-self: end;
 }
+.Checkout__total{
+    font-size: $lg;
+    font-weight: 500;
+}
+     
 .Checkout__purchase-btn{
     width: 100%;
     padding: 8px;
     margin-bottom: 12px;
     border-radius: 8px;
-    font-size: $md;
     background-image: linear-gradient(to top, #ffd750, #fdd744, #fcd735, #f9d723, #f7d700);
     cursor: pointer;
 }
+.Checkout__purchase-btn p{
+    font-size: $md;
+    font-weight: 600;
+}
 
 @media (min-width: 800px){
+    .Checkout{
+        display: grid;
+        align-content: center;
+    }
     .Checkout__orders-container{
         width: 650px;
+        height: 85vh;
+        box-shadow: none;
+        border-radius: 12px;
+        padding: 16px 16px;
     }
     .Checkout__purchase-btn{
         width: 200px;
     }
 }
+
+
+
+

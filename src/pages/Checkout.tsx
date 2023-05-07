@@ -8,35 +8,20 @@ function Checkout(): JSX.Element {
 			<div className='Checkout__orders-container'>
 				<div>
 					<h3 className='Checkout__orders-title'>Shooping Cart</h3>
-					{/* <hr
-						style={{
-							width: '100%',
-							height: '0.1px',
-							margin: '0 auto',
-						}}
-						color='black'
-					/> */}
 				</div>
 				<div className='Checkout__item-list'>
 					<CheckoutItem />
 					<CheckoutItem />
 					<CheckoutItem />
 					<CheckoutItem />
-					{/* <CheckoutItem />
-					<CheckoutItem />
-					<CheckoutItem />
-					<CheckoutItem />
-					<CheckoutItem />
-					<CheckoutItem />
-					<CheckoutItem />
-					<CheckoutItem /> */}
 				</div>
-				<h3 className='Checkout__total'>Total: 50$</h3>
+				<div className='Checkout__total-container'>
+					<h3 className='Checkout__total'>Total</h3>
+					<span>$100</span>
+				</div>
 				<button className='Checkout__purchase-btn' type='button'>
-					Purchase
+					<p>Continue to pay</p>
 				</button>
-				{/* <div className='Checkout__purchase-container'>
-				</div> */}
 			</div>
 		</section>
 	);

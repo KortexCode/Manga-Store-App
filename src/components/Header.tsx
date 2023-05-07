@@ -6,7 +6,7 @@ function Header(): JSX.Element {
 	return (
 		<header className='Header'>
 			<nav className='nav-bar'>
-				<span className='nav-bar__title'>Manga Hakken</span>
+				<span className='nav-bar__title'>Hakken</span>
 				<div className='nav-bar__items-conatiner'>
 					<ul className='nav-bar__items'>
 						<li>Home</li>

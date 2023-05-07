@@ -6,7 +6,7 @@
     box-shadow: 3px 3px 5px black;
     position: fixed;
     top: 0;
-    background-color: rgba(48, 48, 48, 0.986);
+    background-color: #121212f5;
     z-index: 2;
 }
 .nav-bar{
@@ -19,8 +19,14 @@
     &__title{
         margin-left: 4px;
         font-weight: 700;
-        font-size: $lg;
+        font-size: $xl;
+        font-family: 'Sigmar', cursive;
         color: $primary;
+        text-shadow: 1px  1px 0   black,
+        -1px -1px 0   black,
+         1px -1px 0   black,
+        -1px  1px 0   black,
+         3px  3px 5px #333;
     }
     &__items-conatiner{
         display: flex;
@@ -37,7 +43,16 @@
     }
     &__items li{
         margin-right: 30px;
-        color: $primary;
+        font-size: $md;
+        font-weight: 500;
+        transition-property: color;
+        color: rgb(165, 165, 165);
+        cursor: pointer;
+    }
+    &__items li:hover{
+        transition-duration: 0.8s;
+        color: white;
+      
     }
     &__shopping-cart{
         position: relative;

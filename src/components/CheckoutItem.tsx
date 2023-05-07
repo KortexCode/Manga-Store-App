@@ -4,17 +4,13 @@ import '../styles/CheckoutItem.scss';
 
 function CheckoutItem(): JSX.Element {
 	return (
-		<div className='Checkout__item'>
-			<div className='Checkout__item-name-container'>
-				<p className='Checkout__item-name'>
-					Manga:
-					<span className='Checkout__items'>
-						Name item kotkuri no nakama inai desu kanojo
-					</span>
-				</p>
+		<div className='CheckoutItem'>
+			<div className='CheckoutItem__container'>
+				<img className='CheckoutItem__img' src='' alt='manga' />
+				<p className='CheckoutItem__name'>kotkuri no nakama inai desu kanojo</p>
 			</div>
-			<div className='Checkout__item-price-container'>
-				<span className='Checkout__item-price'>$100</span>
+			<div className='CheckoutItem__price-container'>
+				<span className='CheckoutItem__price'>$100</span>
 				<HiXCircle size={25} />
 			</div>
 		</div>

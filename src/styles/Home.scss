@@ -59,7 +59,8 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, 250px);
         justify-content: center;
-        gap: 16px;
+        column-gap: 16px;
+        row-gap: 24px;
     }
 }
 .overlay--gray-scale{

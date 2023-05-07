@@ -11,6 +11,9 @@ function MangaCard(props: Props) {
 	const { item } = props;
 	return (
 		<article className='MangaCard'>
+			{/* <div className='MangaCard__gender'>
+				<p>{item?.scored}</p>
+			</div> */}
 			<img
 				className='MangaCard__img'
 				src={item?.images.jpg.image_url}
@@ -19,13 +22,14 @@ function MangaCard(props: Props) {
 			<footer className='MangaCard__footer'>
 				<div className='MangaCard__title-container'>
 					<h3 className='MangaCard__title'>{item?.title}</h3>
+					<span className='MangaCard__checkout-price'>30$</span>
 				</div>
-				<div className='MangaCard__description-container'>
+				{/* <div className='MangaCard__description-container'>
 					<p className='MangaCard__gender'>{item?.demographics[0].name} </p>
 					<p className='MangaCard__status'>{item?.status}</p>
 					<p className='MangaCard__rank'>Score {item?.scored}</p>
-				</div>
-				<hr
+				</div> */}
+				{/* <hr
 					className='MangaCard__line'
 					style={{
 						width: '90%',
@@ -33,9 +37,8 @@ function MangaCard(props: Props) {
 						margin: '0 auto',
 					}}
 					color='black'
-				/>
+				/> */}
 				<div className='MangaCard__checkout'>
-					<span className='MangaCard__checkout-price'>30$</span>
 					<HiShoppingCart size={25} />
 				</div>
 			</footer>
