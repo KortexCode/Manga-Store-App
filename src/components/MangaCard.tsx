@@ -17,7 +17,9 @@ function MangaCard(props: Props) {
 				alt={item?.title}
 			/>
 			<footer className='MangaCard__footer'>
-				<h3 className='MangaCard__title'>{item?.title}</h3>
+				<div className='MangaCard__title-container'>
+					<h3 className='MangaCard__title'>{item?.title}</h3>
+				</div>
 				<div className='MangaCard__description-container'>
 					<p className='MangaCard__gender'>{item?.demographics[0].name} </p>
 					<p className='MangaCard__status'>{item?.status}</p>

@@ -1,0 +1,34 @@
+@import './vars';
+
+.Checkout{
+    width: 100%;
+    height: 100vh;
+    padding: 80px 0px 20px 0px;
+    /* display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 16px; */
+    background-color: #E0E2E6;
+}
+.Checkout__orders-container{
+    width: 90%;
+    height: 80vh;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 0 0 3px black;
+    display: grid;
+    grid-template-rows: 30px 1fr 70px;
+    background-color: rgb(255, 255, 255);
+}
+
+.Checkout__item-list{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.Checkout__purchase-container{
+    justify-self: center;
+}

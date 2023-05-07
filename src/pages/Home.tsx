@@ -20,7 +20,7 @@ function Home(): JSX.Element {
 	}, []);
 
 	return (
-		<main className='Home'>
+		<section className='Home'>
 			<section className='Home__title-section'>
 				<img className='Home__title-section-img' src={colladImg} alt='' />
 				<div className='overlay--gray-scale' />
@@ -38,7 +38,7 @@ function Home(): JSX.Element {
 					)}
 				</div>
 			</section>
-		</main>
+		</section>
 	);
 }
 

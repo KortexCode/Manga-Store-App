@@ -1,0 +1,13 @@
+@import './vars';
+
+.Checkout__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Checkout__item-price-container{
+    display: flex;
+    align-items: center;
+
+}
+

@@ -1,6 +1,5 @@
 import React from 'react';
 import { IconContext } from 'react-icons';
-import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 
 type Props = {
@@ -12,8 +11,7 @@ function Layout(props: Props): JSX.Element {
 	return (
 		<IconContext.Provider value={{ className: 'icons-react' }}>
 			<Header />
-			{children}
-			<Footer />
+			<main>{children}</main>
 		</IconContext.Provider>
 	);
 }
