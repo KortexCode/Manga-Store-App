@@ -65,9 +65,11 @@
     background-image: linear-gradient(to top, #ffd750, #fdd744, #fcd735, #f9d723, #f7d700);
     cursor: pointer;
 }
-.Checkout__purchase-btn p{
+.Checkout__purchase-link{
     font-size: $md;
     font-weight: 600;
+    color: black;
+    text-decoration: none;
 }
 
 @media (min-width: 800px){

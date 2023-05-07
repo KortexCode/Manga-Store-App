@@ -11,6 +11,7 @@
     &__title-container{
         width: 100%;
         height: auto;
+        padding-left: 20px;
         position: absolute;
         top:30%;
         z-index: 1;
@@ -19,7 +20,7 @@
         font-family: $font-title-section;
         font-size: 50px;
         font-weight: 700;  
-        color: rgb(255, 238, 5); 
+        color:$yellowLight; 
         text-shadow: 1px  1px 0   black,
         -1px -1px 0   black,
          1px -1px 0   black,
@@ -31,7 +32,7 @@
         font-family: $font-title-section;
         font-size: $xl;
         font-weight: 500;
-        color: rgb(247, 217, 52);
+        color: $primary;
         text-shadow: 1px  1px 0   black,
         -1px -1px 0   black,
          1px -1px 0   black,

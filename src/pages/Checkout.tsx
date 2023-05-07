@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { CheckoutItem } from '../components/CheckoutItem';
 import '../styles/Checkout.scss';
 
 function Checkout(): JSX.Element {
+	const handleNavInfo = () => {};
 	return (
 		<section className='Checkout'>
 			<div className='Checkout__orders-container'>
@@ -19,8 +21,14 @@ function Checkout(): JSX.Element {
 					<h3 className='Checkout__total'>Total</h3>
 					<span>$100</span>
 				</div>
-				<button className='Checkout__purchase-btn' type='button'>
-					<p>Continue to pay</p>
+				<button
+					className='Checkout__purchase-btn'
+					type='button'
+					onClick={handleNavInfo}
+				>
+					<Link className='Checkout__purchase-link' to='checkout/information'>
+						Continue to pay
+					</Link>
 				</button>
 			</div>
 		</section>
