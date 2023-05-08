@@ -7,7 +7,7 @@ function Information(): JSX.Element {
 		<section className='Information'>
 			<div className='Information-content'>
 				<div className='Information-head'>
-					<h2>Contac Information:</h2>
+					<h2>Contact Information:</h2>
 				</div>
 				<section className='Information-form'>
 					<form action=''>
@@ -24,10 +24,11 @@ function Information(): JSX.Element {
 				</section>
 				<div className='Information-buttons'>
 					<Link to='/checkout' className='Information-back'>
-						Back
+						<button type='button'>Back</button>
 					</Link>
+
 					<Link to='/checkout/payment' className='Information-next'>
-						Pay
+						<button type='button'>Pay</button>
 					</Link>
 				</div>
 			</div>

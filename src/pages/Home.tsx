@@ -1,23 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { MangaCard } from '../components/MangaCard';
-import { Datum, Manga } from '../constants/types/mangas';
+import { Datum } from '../constants/types/mangas';
+import { useInitialState } from '../hooks/useInitialState';
 import colladImg from '../assets/collad_.jpg';
 import '../styles/Home.scss';
 
 function Home(): JSX.Element {
-	const [mangaData, setMangaData] = useState<Manga | null>(null);
-	useEffect(() => {
-		async function query(): Promise<void> {
-			const response = await fetch('https://api.jikan.moe/v4/manga');
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-			const resData: Manga = await response.json();
-			console.log('res', resData);
-			setMangaData(resData);
-		}
-		query().catch(e => {
-			console.error(e);
-		});
-	}, []);
+	const { dataManga } = useInitialState();
+	console.log('first', dataManga);
 
 	return (
 		<section className='Home'>
@@ -31,7 +21,7 @@ function Home(): JSX.Element {
 			</section>
 			<section className='Home__manga-section'>
 				<div className='Home__manga-container'>
-					{mangaData?.data.map(
+					{dataManga?.data.map(
 						(item: Datum): JSX.Element => (
 							<MangaCard key={item.title} item={item} />
 						)

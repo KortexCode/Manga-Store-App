@@ -4,17 +4,25 @@
 $font-title-section: 'Sigmar', cursive;
 $font-document: 'Roboto', sans-serif;
 //Font-sizes
-$sm:1.4rem;
-$md:1.6rem;
-$lg:1.8rem;
-$xl:2.0rem;
+$sm: 1.4rem;
+$md: 1.6rem;
+$lg: 1.8rem;
+$xl: 2rem;
 //Colors
-$primary:rgb(247, 203, 11);
-$secondary:rgb(247, 217, 52);
+$primary: rgb(247, 203, 11);
+$secondary: rgb(247, 217, 52);
 $yellowLight: rgb(255, 238, 5);
+$background-buttons: linear-gradient(
+	to top,
+	#ffd750,
+	#fdd744,
+	#fcd735,
+	#f9d723,
+	#f7d700
+);
 //Mixins
-@mixin cards-description{
-    font-size: $sm;
-    font-weight: 500;
-    color: black;
+@mixin cards-description {
+	font-size: $sm;
+	font-weight: 500;
+	color: black;
 }

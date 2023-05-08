@@ -21,15 +21,15 @@ function Checkout(): JSX.Element {
 					<h3 className='Checkout__total'>Total</h3>
 					<span>$100</span>
 				</div>
-				<button
-					className='Checkout__purchase-btn'
-					type='button'
-					onClick={handleNavInfo}
-				>
-					<Link className='Checkout__purchase-link' to='checkout/information'>
-						Continue to pay
-					</Link>
-				</button>
+				<Link className='Checkout__purchase-link' to='checkout/information'>
+					<button
+						className='Checkout__purchase-btn'
+						type='button'
+						onClick={handleNavInfo}
+					>
+						Continue
+					</button>
+				</Link>
 			</div>
 		</section>
 	);
