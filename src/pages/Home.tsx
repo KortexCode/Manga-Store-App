@@ -21,11 +21,23 @@ function Home(): JSX.Element {
 			</section>
 			<section className='Home__manga-section'>
 				<div className='Home__manga-container'>
-					{dataManga?.data.map(
-						(item: Datum): JSX.Element => (
-							<MangaCard key={item.title} item={item} />
-						)
-					)}
+					{dataManga?.data
+						.filter((item: Datum) => {
+							const censored = item.genres.some((gen): boolean => {
+								if (gen.name === 'Hentai') return true;
+								if (gen.name === 'Boys Love') return true;
+								if (gen.name === 'Girls Love') return true;
+								if (gen.name === 'Erotica') return true;
+								if (gen.name === 'Ecchi') return true;
+								return false;
+							});
+							return !censored;
+						})
+						.map(
+							(itemManga): JSX.Element => (
+								<MangaCard key={itemManga.title} item={itemManga} />
+							)
+						)}
 				</div>
 			</section>
 		</section>
