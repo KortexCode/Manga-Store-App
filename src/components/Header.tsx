@@ -1,6 +1,7 @@
 import React from 'react';
 import { HiShoppingCart, HiHome, HiUserGroup } from 'react-icons/hi';
 import { Link, NavLink } from 'react-router-dom';
+import { Search } from './Search';
 import logoHankken from '../assets/kawaii.jpg';
 import '../styles/Header.scss';
 
@@ -38,6 +39,7 @@ function Header(): JSX.Element {
 							<HiUserGroup size={20} />
 						</Link>
 					</div>
+					<Search />
 					<ul className='nav-bar__items'>
 						{navlink.map(link => (
 							<li key={link.name}>

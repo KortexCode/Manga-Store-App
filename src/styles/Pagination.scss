@@ -1,0 +1,32 @@
+@import './vars';
+
+.Pagination {
+	margin: 0 auto;
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.Paginaton__link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.Pagination .btn--next {
+	margin-right: 0;
+}
+.Pagination__btn {
+	padding: 4px;
+	margin-right: 4px;
+	background-image: $background-buttons;
+	border: none;
+	border-radius: 8px;
+}
+.Pagination__page-counter {
+	margin: 0 6px;
+	font-size: $sm;
+	font-weight: 400;
+}
+.Pagination__page-counter span {
+	font-weight: 500;
+}

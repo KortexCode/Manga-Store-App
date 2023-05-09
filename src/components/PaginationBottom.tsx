@@ -12,33 +12,41 @@ type Page = {
 	page: string;
 };
 
-function PaginationTop() {
+function PaginationBottom() {
 	const param: Page = useParams();
 	let page = 1;
 	if (param.page) {
 		page = parseInt(param.page, 10);
 	}
+	const handlecrollTo = () => {
+		window.scrollTo(0, 100);
+	};
 	return (
 		<div className='Pagination'>
-			<Link to='/page/1' className='Paginaton__link'>
+			<Link to='/page/1' onClick={handlecrollTo} className='Paginaton__link'>
 				<button className='Pagination__btn' type='button'>
 					<HiChevronDoubleLeft size={18} />
 				</button>
 			</Link>
-			<Link to={`/page/${page - 1}`} className='Paginaton__link'>
-				<button className='Pagination__btn btn--next' type='button'>
+			<Link
+				to={`/page/${page - 1}`}
+				onClick={handlecrollTo}
+				className='Paginaton__link'
+			>
+				<button className='Pagination__btn' type='button'>
 					<HiChevronLeft size={18} />
 				</button>
 			</Link>
-			<p className='Pagination__page-counter'>
-				<span>Page</span> {page} <span>of</span> 2640
-			</p>
-			<Link to={`/page/${page + 1}`} className='Paginaton__link'>
+			<Link
+				to={`/page/${page + 1}`}
+				onClick={handlecrollTo}
+				className='Paginaton__link'
+			>
 				<button className='Pagination__btn' type='button'>
 					<HiChevronRight size={18} />
 				</button>
 			</Link>
-			<Link to='/page/2538' className='Paginaton__link'>
+			<Link to='/page/2538' onClick={handlecrollTo} className='Paginaton__link'>
 				<button className='Pagination__btn' type='button'>
 					<HiChevronDoubleRight size={18} />
 				</button>
@@ -47,4 +55,4 @@ function PaginationTop() {
 	);
 }
 
-export { PaginationTop };
+export { PaginationBottom };

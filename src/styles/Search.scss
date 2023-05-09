@@ -1,0 +1,23 @@
+@import './vars';
+
+.Search {
+	width: auto;
+	height: auto;
+	margin-right: 8px;
+	padding: 0 4px;
+	border: 1px solid $primary;
+	border-radius: 80px;
+	box-shadow: 0 0 6px $primary;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+}
+.Search__input {
+	border: none;
+	border-radius: 8px;
+	margin: 0;
+}
+.Search span {
+	padding-right: 4px;
+}
