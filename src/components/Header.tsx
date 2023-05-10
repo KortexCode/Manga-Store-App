@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { HiShoppingCart, HiHome, HiUserGroup } from 'react-icons/hi';
 import { Link, NavLink } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 import { Search } from './Search';
 import logoHankken from '../assets/kawaii.jpg';
 import '../styles/Header.scss';
@@ -23,6 +24,8 @@ const navlink: NavMenu = [
 ];
 
 function Header(): JSX.Element {
+	const { dataManga } = useContext(AppContext);
+	console.log(dataManga);
 	return (
 		<header className='Header'>
 			<nav className='nav-bar'>

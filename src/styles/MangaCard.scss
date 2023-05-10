@@ -1,9 +1,9 @@
 @import './vars';
 
 .MangaCard {
-    width: 250px;
-    height: auto;
-    position: relative;
+	width: 250px;
+	height: auto;
+	position: relative;
 }
 /* .MangaCard__gender{
     width: 50px;
@@ -16,59 +16,74 @@
     top:66%;
     background-color: rgb(255, 230, 3);
 } */
-.MangaCard__img{
-    width: 100%;
-    height: 320px;
-    border-radius: 8px;
-    border: 0.5px solid rgba(214, 214, 214, 0.829);
-    
+.MangaCard__img {
+	width: 100%;
+	height: 320px;
+	border-radius: 8px;
+	border: 0.5px solid rgba(214, 214, 214, 0.829);
 }
-.MangaCard__footer{
-    width: 100%;
-    display: flex;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;   
+.MangaCard__footer {
+	width: 100%;
+	display: flex;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
-.MangaCard__description-container{
-    width: 100%;
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;   
+.MangaCard__description-container {
+	width: 100%;
+	height: auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 4px;
 }
-.MangaCard__title-container{
-    width: 100%;
-    height: 45px;
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
+.MangaCard__title-container {
+	width: 100%;
+	height: 45px;
+	padding-top: 10px;
+	display: flex;
+	flex-direction: column;
 }
-.MangaCard__title{
-    margin-bottom: 4px;
-    font-size: $sm;
-    font-weight: 500;
-    color: black;
+.MangaCard__title {
+	margin-bottom: 4px;
+	font-size: $sm;
+	font-weight: 500;
+	color: black;
 }
-.MangaCard__status{
-    @include cards-description;
-    justify-self: end;
+.MangaCard__status {
+	@include cards-description;
+	justify-self: end;
 }
-.MangaCard__gender{
-    @include cards-description;
+.MangaCard__gender {
+	@include cards-description;
 }
-.MangaCard__rank{
-    @include cards-description;
+.MangaCard__rank {
+	@include cards-description;
 }
-.MangaCard__checkout{
-    height: auto;
-    display: flex;
-    justify-content: end;
-    align-items: center;
+.MangaCard__checkout {
+	height: auto;
+	border-radius: 100%;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	position: relative;
 }
-.MangaCard__checkout-price{
-    font-size: $sm;
-    font-weight: 400;
-    color: rgb(95, 95, 95);
+.MangaCard__checkout-btn {
+	border: none;
+	background-color: #f8f8f8;
 }
-
-
+.MangaCard__checkout-plus {
+	width: 16px;
+	height: 16px;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: 14%;
+	left: -2%;
+	background-color: $primary;
+}
+.MangaCard__checkout-price {
+	font-size: $sm;
+	font-weight: 400;
+	color: rgb(95, 95, 95);
+}

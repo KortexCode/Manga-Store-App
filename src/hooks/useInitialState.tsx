@@ -2,39 +2,52 @@ import { useEffect, useReducer } from 'react';
 import { Manga } from 'constants/types/mangas';
 // Types
 type Initial = {
-	dataManga: Manga | null;
+	dataManga: Manga;
 	search: string;
+	cart: ProductInCart[];
+};
+type ProductInCart = {
+	title: string;
+	img: string;
+	price: number;
 };
 type ActionType = {
 	queryDataManga: string;
 	makeASearch: string;
+	addToCart: string;
 };
 type Action = {
 	type: string;
-	payload: Manga;
+	payload: Payload;
 };
-type Payload = Manga | string;
+type Payload = Manga | string | ProductInCart;
 
 // Estado inicial
 const initialState: Initial = {
 	dataManga: null,
 	search: '',
+	cart: [],
 };
+console.log(typeof initialState);
 // Action Types
 const actionType: ActionType = {
 	queryDataManga: 'query data from api',
 	makeASearch: 'make a search',
+	addToCart: 'add to cart',
 };
 
-// ObjectReducer
 const objectReducer = (state: Initial, payload: Payload) => ({
 	[actionType.queryDataManga]: {
 		...state,
-		dataManga: typeof payload === 'object' ? payload : null,
+		dataManga: payload,
 	},
 	[actionType.makeASearch]: {
 		...state,
-		search: typeof payload === 'string' ? payload : '',
+		search: payload,
+	},
+	[actionType.addToCart]: {
+		...state,
+		cart: [...state.cart, payload],
 	},
 });
 // Función reductora
@@ -44,8 +57,15 @@ function reducer(state: Initial, action: Action): Initial {
 
 function useInitialState(Api: string) {
 	const [state, dispatch] = useReducer(reducer, initialState);
-	const { dataManga } = state;
-	console.log('tipo', typeof dataManga);
+	const { dataManga, cart } = state;
+	console.log('tipo', cart);
+
+	const handleAddToCart = (item: ProductInCart) => {
+		dispatch({
+			type: actionType.addToCart,
+			payload: item,
+		});
+	};
 
 	useEffect(() => {
 		async function query(): Promise<void> {
@@ -63,6 +83,7 @@ function useInitialState(Api: string) {
 	}, [Api]);
 	return {
 		dataManga,
+		handleAddToCart,
 	};
 }
 

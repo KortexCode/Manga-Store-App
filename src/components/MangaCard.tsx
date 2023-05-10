@@ -1,19 +1,30 @@
-import React from 'react';
-import { HiShoppingCart } from 'react-icons/hi';
+import React, { MouseEventHandler } from 'react';
+import { HiShoppingCart, HiOutlinePlusSm } from 'react-icons/hi';
 import { Datum } from '../constants/types/mangas';
 import '../styles/MangaCard.scss';
 
+type ProductInCart = {
+	title: string;
+	img: string;
+	price: number;
+};
 type Props = {
 	item: Datum | null;
+	handleAddToCart: (arg: ProductInCart) => void;
 };
 
 function MangaCard(props: Props) {
-	const { item } = props;
+	const { item, handleAddToCart } = props;
+	const onAddToCart: MouseEventHandler<HTMLButtonElement> = () => {
+		const product: ProductInCart = {
+			title: item?.title,
+			img: item?.images.jpg.image_url,
+			price: 30,
+		};
+		handleAddToCart(product);
+	};
 	return (
 		<article className='MangaCard'>
-			{/* <div className='MangaCard__gender'>
-				<p>{item?.scored}</p>
-			</div> */}
 			<img
 				className='MangaCard__img'
 				src={item?.images.jpg.image_url}
@@ -24,22 +35,19 @@ function MangaCard(props: Props) {
 					<h3 className='MangaCard__title'>{item?.title}</h3>
 					<span className='MangaCard__checkout-price'>30$</span>
 				</div>
-				{/* <div className='MangaCard__description-container'>
-					<p className='MangaCard__gender'>{item?.demographics[0].name} </p>
-					<p className='MangaCard__status'>{item?.status}</p>
-					<p className='MangaCard__rank'>Score {item?.scored}</p>
-				</div> */}
-				{/* <hr
-					className='MangaCard__line'
-					style={{
-						width: '90%',
-						height: '0.1px',
-						margin: '0 auto',
-					}}
-					color='black'
-				/> */}
 				<div className='MangaCard__checkout'>
-					<HiShoppingCart size={25} />
+					<button
+						type='button'
+						className='MangaCard__checkout-btn'
+						onClick={onAddToCart}
+					>
+						<div className='MangaCard__checkout-plus'>
+							<HiOutlinePlusSm size={20} />
+						</div>
+						<span>
+							<HiShoppingCart size={25} />
+						</span>
+					</button>
 				</div>
 			</footer>
 		</article>
