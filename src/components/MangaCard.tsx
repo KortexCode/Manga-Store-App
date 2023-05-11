@@ -12,14 +12,17 @@ type Props = {
 	item: Datum;
 	handleAddToCart: (arg: ProductInCart) => void;
 };
-
+function ramdonNum(min: number, max: number): number {
+	return Math.round(Math.random() * (max - min) + min);
+}
 function MangaCard(props: Props) {
 	const { item, handleAddToCart } = props;
+	const mangaPrice = ramdonNum(30, 60);
 	const onAddToCart: MouseEventHandler<HTMLButtonElement> = () => {
 		const product: ProductInCart = {
 			title: item.title,
 			img: item.images.jpg.image_url,
-			price: 30,
+			price: mangaPrice,
 		};
 		handleAddToCart(product);
 	};
@@ -27,13 +30,13 @@ function MangaCard(props: Props) {
 		<article className='MangaCard'>
 			<img
 				className='MangaCard__img'
-				src={item?.images.jpg.image_url}
-				alt={item?.title}
+				src={item.images.jpg.image_url}
+				alt={item.title}
 			/>
 			<footer className='MangaCard__footer'>
 				<div className='MangaCard__title-container'>
-					<h3 className='MangaCard__title'>{item?.title}</h3>
-					<span className='MangaCard__checkout-price'>30$</span>
+					<h3 className='MangaCard__title'>{item.title}</h3>
+					<span className='MangaCard__checkout-price'>{mangaPrice}$</span>
 				</div>
 				<div className='MangaCard__checkout'>
 					<button
