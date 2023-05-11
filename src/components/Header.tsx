@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { HiShoppingCart, HiHome, HiUserGroup } from 'react-icons/hi';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { Search } from './Search';
 import logoHankken from '../assets/kawaii.jpg';
@@ -24,8 +24,15 @@ const navlink: NavMenu = [
 ];
 
 function Header(): JSX.Element {
-	const { dataManga } = useContext(AppContext);
-	console.log(dataManga);
+	const { cart } = useContext(AppContext);
+	const { pathname } = useLocation();
+	// Verificando locación para renderizar barra de búsqueda
+	let close = true;
+	if (pathname === '/checkout') close = false;
+	if (pathname === '/checkout/information') close = false;
+	if (pathname === '/checkout/payment') close = false;
+	if (pathname === '/checkout/success') close = false;
+
 	return (
 		<header className='Header'>
 			<nav className='nav-bar'>
@@ -42,7 +49,7 @@ function Header(): JSX.Element {
 							<HiUserGroup size={20} />
 						</Link>
 					</div>
-					<Search />
+					{close && <Search />}
 					<ul className='nav-bar__items'>
 						{navlink.map(link => (
 							<li key={link.name}>
@@ -54,7 +61,9 @@ function Header(): JSX.Element {
 					</ul>
 					<Link to='/checkout' className='nav-bar__shopping-cart'>
 						<HiShoppingCart size={28} />
-						<div className='shopping-cart__count' />
+						{cart.length > 0 && (
+							<div className='shopping-cart__count'>{cart.length}</div>
+						)}
 					</Link>
 				</div>
 			</nav>

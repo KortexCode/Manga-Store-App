@@ -1,36 +1,39 @@
 @import './vars';
 
-.CheckoutItem{
-    margin-right: 8px;
-    margin-bottom: 8px;
-    padding-top: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-}
-    
-.CheckoutItem__container{
-    display: flex;
-    align-items: center;
-}
-.CheckoutItem__img{
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    margin-right: 8px;
-}
-.CheckoutItem__name{
-    font-size: $sm;
-    font-weight: 400;
-}
-.CheckoutItem__price-container{
-    display: flex;
-    align-items: center;
-}
-.CheckoutItem__price{
-    margin-right: 8px;
-    font-size: $md;
-    font-weight: 500;
+.CheckoutItem {
+	margin-right: 8px;
+	margin-bottom: 8px;
+	padding-top: 8px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
 }
 
+.CheckoutItem__container {
+	display: flex;
+	align-items: center;
+}
+.CheckoutItem__img {
+	width: 40px;
+	height: 40px;
+	border-radius: 8px;
+	margin-right: 8px;
+}
+.CheckoutItem__name {
+	font-size: $sm;
+	font-weight: 400;
+}
+.Checkout__btn-remove {
+	border: none;
+	background-color: white;
+}
+.CheckoutItem__price-container {
+	display: flex;
+	align-items: center;
+}
+.CheckoutItem__price {
+	margin-right: 8px;
+	font-size: $md;
+	font-weight: 500;
+}

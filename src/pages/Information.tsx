@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useContext, useRef } from 'react';
 import '../styles/Information.scss';
 import { Link } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 
 function Information(): JSX.Element {
+	const { cart, handleAddBuyer } = useContext(AppContext);
+	const node = useRef<HTMLFormElement>(null);
+	const formNode = (node.current as HTMLFormElement) || undefined;
+	const formData = new FormData(formNode);
+
+	const onPay = () => {
+		const buyer = {
+			name: formData.get('name'),
+			email: formData.get('email'),
+			address: formData.get('address'),
+			apto: formData.get('apto'),
+			city: formData.get('city'),
+			country: formData.get('country'),
+			state: formData.get('state'),
+			cp: formData.get('cp'),
+			phone: formData.get('phone'),
+		};
+		console.log('el va', buyer);
+		handleAddBuyer(buyer);
+	};
+	// Cálcula el total de los elementos agregados
+	const total = cart.reduce(
+		(prevItem, currentItem) => currentItem.price + prevItem,
+		0
+	);
+
 	return (
 		<section className='Information'>
 			<div className='Information-content'>
@@ -10,7 +37,7 @@ function Information(): JSX.Element {
 					<h2>Contact Information:</h2>
 				</div>
 				<section className='Information-form'>
-					<form action=''>
+					<form ref={node}>
 						<input type='text' placeholder='Full name' name='name' />
 						<input type='text' placeholder='Email' name='email' />
 						<input type='text' placeholder='Direction' name='addres' />
@@ -27,9 +54,11 @@ function Information(): JSX.Element {
 						<button type='button'>Back</button>
 					</Link>
 
-					<Link to='/checkout/payment' className='Information-next'>
-						<button type='button'>Pay</button>
-					</Link>
+					{/* <Link to='/checkout/payment' className='Information-next'> */}
+					<button type='button' onClick={onPay}>
+						Pay
+					</button>
+					{/* </Link> */}
 				</div>
 			</div>
 			<section className='Information-sidebar'>
@@ -37,11 +66,11 @@ function Information(): JSX.Element {
 				<div className='Information-item'>
 					<div className='Information-element'>
 						<h4>Articles</h4>
-						<span>10</span>
+						<span>{cart.length}</span>
 					</div>
 					<div className='Information-element'>
 						<h4>Total</h4>
-						<span>$200</span>
+						<span>${total}</span>
 					</div>
 				</div>
 			</section>
