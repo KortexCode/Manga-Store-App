@@ -25,7 +25,7 @@ function Home(): JSX.Element {
 			<PaginationTop />
 			<section className='Home__manga-section'>
 				<div className='Home__manga-container'>
-					{dataManga?.data
+					{dataManga
 						.filter((item: Datum) => {
 							const censored = item.genres.some((gen): boolean => {
 								if (gen.name === 'Hentai') return true;

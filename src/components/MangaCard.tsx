@@ -9,7 +9,7 @@ type ProductInCart = {
 	price: number;
 };
 type Props = {
-	item: Datum | null;
+	item: Datum;
 	handleAddToCart: (arg: ProductInCart) => void;
 };
 
@@ -17,8 +17,8 @@ function MangaCard(props: Props) {
 	const { item, handleAddToCart } = props;
 	const onAddToCart: MouseEventHandler<HTMLButtonElement> = () => {
 		const product: ProductInCart = {
-			title: item?.title,
-			img: item?.images.jpg.image_url,
+			title: item.title,
+			img: item.images.jpg.image_url,
 			price: 30,
 		};
 		handleAddToCart(product);

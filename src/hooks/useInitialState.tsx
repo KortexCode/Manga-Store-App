@@ -1,8 +1,8 @@
 import { useEffect, useReducer } from 'react';
-import { Manga } from 'constants/types/mangas';
+import { Datum, Manga } from 'constants/types/mangas';
 // Types
 type Initial = {
-	dataManga: Manga;
+	dataManga: Datum[];
 	search: string;
 	cart: ProductInCart[];
 };
@@ -20,15 +20,15 @@ type Action = {
 	type: string;
 	payload: Payload;
 };
-type Payload = Manga | string | ProductInCart;
+type Payload = Datum[] | string | ProductInCart;
 
 // Estado inicial
 const initialState: Initial = {
-	dataManga: null,
+	dataManga: [],
 	search: '',
 	cart: [],
 };
-console.log(typeof initialState);
+
 // Action Types
 const actionType: ActionType = {
 	queryDataManga: 'query data from api',
@@ -39,15 +39,15 @@ const actionType: ActionType = {
 const objectReducer = (state: Initial, payload: Payload) => ({
 	[actionType.queryDataManga]: {
 		...state,
-		dataManga: payload,
+		dataManga: payload as Datum[],
 	},
 	[actionType.makeASearch]: {
 		...state,
-		search: payload,
+		search: payload as string,
 	},
 	[actionType.addToCart]: {
 		...state,
-		cart: [...state.cart, payload],
+		cart: [...state.cart, payload] as ProductInCart[],
 	},
 });
 // Función reductora
@@ -74,7 +74,7 @@ function useInitialState(Api: string) {
 			const resData: Manga = await response.json();
 			dispatch({
 				type: actionType.queryDataManga,
-				payload: resData,
+				payload: resData.data,
 			});
 		}
 		query().catch(e => {
