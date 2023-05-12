@@ -1,8 +1,23 @@
 @import './vars';
 
 .Success {
-	margin: 0 0 4em 0;
+	width: 80%;
+	height: auto;
+	padding-top: 30px;
+	margin: 0 auto;
+	margin-top: 60px;
 }
-.Success-map {
-	margin: 10px 0 0 0;
+.Success-conten {
+	display: flex;
+	flex-direction: column;
+}
+.Success-content .title {
+	margin-top: 12px;
+	font-size: $lg;
+}
+.Success-content p {
+	margin-top: 12px;
+	margin-bottom: 8px;
+	font-size: $sm;
+	font-weight: 400;
 }

@@ -1,13 +1,16 @@
 import React from 'react';
+import { Map } from '../components/Map';
 import '../styles/Success.scss';
 
 function Success(): JSX.Element {
 	return (
 		<div className='Success'>
 			<div className='Success-content'>
-				<h2>Oscar, Gracias por tu compra</h2>
-				<span>Tu pedido lelgara en 3 dias a tu direccion:</span>
-				<div className='Success-map'>Google Maps</div>
+				<h2 className='title'>Gracias por tu compra</h2>
+
+				<p>Your order will arrive in 3 days:</p>
+
+				<Map />
 			</div>
 		</div>
 	);

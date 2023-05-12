@@ -1,8 +1,11 @@
-import React, { MouseEventHandler } from 'react';
+import React, { MouseEventHandler, useEffect, useRef } from 'react';
 import { HiShoppingCart, HiOutlinePlusSm } from 'react-icons/hi';
+import { useObserver } from '../hooks/useObserver';
 import { Datum } from '../constants/types/mangas';
 import '../styles/MangaCard.scss';
 
+const BG_IMG =
+	'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4=';
 type ProductInCart = {
 	title: string;
 	img: string;
@@ -26,11 +29,23 @@ function MangaCard(props: Props) {
 		};
 		handleAddToCart(product);
 	};
+	const node = useRef<HTMLImageElement>(null);
+	useEffect(() => {
+		const url = item.images.jpg.image_url;
+		const observer: IntersectionObserver = useObserver(url);
+		const imgNode = node.current as Element;
+		observer.observe(imgNode);
+
+		return () => {
+			observer.disconnect();
+		};
+	}, []);
 	return (
 		<article className='MangaCard'>
 			<img
+				ref={node}
 				className='MangaCard__img'
-				src={item.images.jpg.image_url}
+				src={BG_IMG}
 				alt={item.title}
 			/>
 			<footer className='MangaCard__footer'>

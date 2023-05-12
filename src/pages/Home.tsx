@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { MangaCard } from '../components/MangaCard';
 import { PaginationTop } from '../components/PaginationTop';
@@ -8,15 +7,9 @@ import { Datum } from '../constants/types/mangas';
 import colladImg from '../assets/collad_.jpg';
 import '../styles/Home.scss';
 
-type Page = {
-	page: string;
-};
-
 function Home(): JSX.Element {
 	const { dataManga, handleAddToCart } = useContext(AppContext);
 	console.log('first', dataManga);
-	const param: Page = useParams();
-	console.log('parame', param);
 
 	return (
 		<section className='Home'>

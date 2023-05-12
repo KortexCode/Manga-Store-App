@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import { Datum, Manga } from 'constants/types/mangas';
-import { useParams } from 'react-router-dom';
+
 // Types
 type Initial = {
 	dataManga: Datum[];
@@ -76,9 +76,7 @@ const objectReducer = (state: Initial, payload: Payload) => ({
 		buyer: [...state.buyer, payload] as Buyer[],
 	},
 });
-type Page = {
-	page: string;
-};
+
 // Función reductora
 function reducer(state: Initial, action: Action): Initial {
 	return objectReducer(state, action.payload)[action.type] || state;
@@ -86,8 +84,6 @@ function reducer(state: Initial, action: Action): Initial {
 
 function useInitialState(Api: string) {
 	const [state, dispatch] = useReducer(reducer, initialState);
-	const param: Page = useParams();
-	console.log('initial apram', param);
 
 	const { dataManga, cart, buyer } = state;
 	const handleAddToCart = (item: ProductInCart) => {

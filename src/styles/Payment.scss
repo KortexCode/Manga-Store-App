@@ -1,11 +1,11 @@
 @import './vars';
-h4,
-span {
+.Payment h4,
+.Payment span {
 	font-size: $sm;
 	font-weight: 400;
 	margin-bottom: 8px;
 }
-h3 {
+.Payment h3 {
 	margin-bottom: 10px;
 	font-size: $lg;
 	font-weight: 600;
