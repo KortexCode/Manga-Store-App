@@ -1,15 +1,19 @@
 import React, { useContext, useRef } from 'react';
 import '../styles/Information.scss';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 
 function Information(): JSX.Element {
 	const { cart, handleAddBuyer } = useContext(AppContext);
+	const history = useHistory();
+	if (cart.length <= 0) {
+		history.goBack();
+	}
 	const node = useRef<HTMLFormElement>(null);
 	const formNode = (node.current as HTMLFormElement) || undefined;
-	const formData = new FormData(formNode);
 
 	const onPay = () => {
+		const formData = new FormData(formNode);
 		const buyer = {
 			name: formData.get('name'),
 			email: formData.get('email'),
@@ -21,9 +25,9 @@ function Information(): JSX.Element {
 			cp: formData.get('cp'),
 			phone: formData.get('phone'),
 		};
-		console.log('el va', buyer);
 		handleAddBuyer(buyer);
 	};
+
 	// Cálcula el total de los elementos agregados
 	const total = cart.reduce(
 		(prevItem, currentItem) => currentItem.price + prevItem,
@@ -40,7 +44,7 @@ function Information(): JSX.Element {
 					<form ref={node}>
 						<input type='text' placeholder='Full name' name='name' />
 						<input type='text' placeholder='Email' name='email' />
-						<input type='text' placeholder='Direction' name='addres' />
+						<input type='text' placeholder='Direction' name='address' />
 						<input type='text' placeholder='apto' name='apto' />
 						<input type='text' placeholder='City' name='city' />
 						<input type='text' placeholder='Country' name='country' />
@@ -54,11 +58,11 @@ function Information(): JSX.Element {
 						<button type='button'>Back</button>
 					</Link>
 
-					{/* <Link to='/checkout/payment' className='Information-next'> */}
-					<button type='button' onClick={onPay}>
-						Pay
-					</button>
-					{/* </Link> */}
+					<Link to='/checkout/payment' className='Information-next'>
+						<button type='button' onClick={onPay}>
+							Pay
+						</button>
+					</Link>
 				</div>
 			</div>
 			<section className='Information-sidebar'>

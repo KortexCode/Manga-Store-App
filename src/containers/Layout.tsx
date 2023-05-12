@@ -1,13 +1,9 @@
 import React, { useMemo } from 'react';
 import { IconContext } from 'react-icons';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useInitialState } from '../hooks/useInitialState';
 import { Header } from '../components/Header';
 import { AppContext } from '../context/AppContext';
-
-type Page = {
-	page: string;
-};
 
 type Props = {
 	children: JSX.Element;
@@ -15,10 +11,15 @@ type Props = {
 
 function Layout(props: Props): JSX.Element {
 	const { children } = props;
-	const param: Page = useParams();
+	const location = useLocation();
+	// Se verifica la url actual para extraer el id de la página
+	const array = location.pathname.split('/');
+	const [, page, id] = array;
+	// Se pasa a entero para verificar si el id es realmente un número
+	const idPage = parseInt(id, 10);
 	let Api = '';
-	if (param.page) {
-		Api = `https://api.jikan.moe/v4/manga?page=${parseInt(param.page, 10)}`;
+	if (page === 'page' && typeof idPage === 'number') {
+		Api = `https://api.jikan.moe/v4/manga?${page}=${id}`;
 	} else {
 		Api = `https://api.jikan.moe/v4/manga?page=1`;
 	}
