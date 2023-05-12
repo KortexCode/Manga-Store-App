@@ -38,6 +38,7 @@ module.exports = {
     ],
     'no-tabs': [
       'error', { allowIndentationTabs: true }
-    ],   
+    ], 
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]  
   },
 };

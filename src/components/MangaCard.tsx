@@ -1,11 +1,12 @@
-import React, { MouseEventHandler, useEffect, useRef } from 'react';
+import React, { MouseEventHandler, useEffect, useRef, useState } from 'react';
 import { HiShoppingCart, HiOutlinePlusSm } from 'react-icons/hi';
 import { useObserver } from '../hooks/useObserver';
 import { Datum } from '../constants/types/mangas';
 import '../styles/MangaCard.scss';
-
+// Imagen de fondo de las carts
 const BG_IMG =
 	'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4=';
+// Tipos
 type ProductInCart = {
 	title: string;
 	img: string;
@@ -15,12 +16,15 @@ type Props = {
 	item: Datum;
 	handleAddToCart: (arg: ProductInCart) => void;
 };
+// Para generar un precio aleatorio entre 30 y 60
 function ramdonNum(min: number, max: number): number {
 	return Math.round(Math.random() * (max - min) + min);
 }
+
 function MangaCard(props: Props) {
 	const { item, handleAddToCart } = props;
-	const mangaPrice = ramdonNum(30, 60);
+	const [mangaPrice, setMangaPrice] = useState<number>(0);
+	// Evento para agregar productos al carrito
 	const onAddToCart: MouseEventHandler<HTMLButtonElement> = () => {
 		const product: ProductInCart = {
 			title: item.title,
@@ -29,8 +33,10 @@ function MangaCard(props: Props) {
 		};
 		handleAddToCart(product);
 	};
+	// Se setean los precios y se agregan los elementos img al observer
 	const node = useRef<HTMLImageElement>(null);
 	useEffect(() => {
+		setMangaPrice(ramdonNum(30, 60));
 		const url = item.images.jpg.image_url;
 		const observer: IntersectionObserver = useObserver(url);
 		const imgNode = node.current as Element;

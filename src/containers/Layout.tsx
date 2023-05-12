@@ -12,7 +12,7 @@ type Props = {
 function Layout(props: Props): JSX.Element {
 	const { children } = props;
 	const [location, setLocation] = useState<string>('');
-	console.log('locationsave', location);
+
 	const locationPath = useLocation();
 	// Se verifica la url actual para extraer el id de la página
 	const array = locationPath.pathname.split('/');

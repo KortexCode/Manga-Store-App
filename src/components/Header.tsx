@@ -24,7 +24,7 @@ const navlink: NavMenu = [
 ];
 
 function Header(): JSX.Element {
-	const { cart } = useContext(AppContext);
+	const { cart, handleToSearch } = useContext(AppContext);
 	const { pathname } = useLocation();
 	// Verificando locación para renderizar barra de búsqueda
 	let close = true;
@@ -49,7 +49,7 @@ function Header(): JSX.Element {
 							<HiUserGroup size={20} />
 						</Link>
 					</div>
-					{close && <Search />}
+					{close && <Search handleToSearch={handleToSearch} />}
 					<ul className='nav-bar__items'>
 						{navlink.map(link => (
 							<li key={link.name}>

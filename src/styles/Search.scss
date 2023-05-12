@@ -14,10 +14,22 @@
 	background-color: white;
 }
 .Search__input {
+	padding-left: 4px;
+	margin: 0;
 	border: none;
 	border-radius: 8px;
-	margin: 0;
+	font-size: $sm;
+	font-weight: 500;
+	outline: none;
 }
 .Search span {
 	padding-right: 4px;
+}
+
+@media (max-width: 700px) {
+	.Search {
+		position: absolute;
+		top: 53px;
+		left: calc(50% - 114.5px);
+	}
 }

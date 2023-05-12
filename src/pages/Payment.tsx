@@ -6,6 +6,9 @@ import '../styles/Payment.scss';
 function Payment(): JSX.Element {
 	const { cart } = useContext(AppContext);
 	const history = useHistory();
+	if (cart.length === 0) {
+		history.push('/checkout');
+	}
 	// Cálcula el total de los elementos agregados
 	const total = cart.reduce(
 		(prevItem, currentItem) => currentItem.price + prevItem,
@@ -25,12 +28,6 @@ function Payment(): JSX.Element {
 						<span>$ {item.price}</span>
 					</div>
 				))}
-
-				<div className='Payment-element'>
-					<h4>title</h4>
-					<span>$price</span>
-				</div>
-
 				<div className='Payment__total'>
 					<span>${total}</span>
 				</div>

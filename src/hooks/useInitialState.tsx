@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import { Datum, Manga } from 'constants/types/mangas';
 
 // Types
@@ -6,18 +6,18 @@ type Initial = {
 	dataManga: Datum[];
 	search: string;
 	cart: ProductInCart[];
-	buyer: Buyer[];
+	buyer: Buyer;
 };
 type Buyer = {
-	name: FormDataEntryValue | null;
-	email: FormDataEntryValue | null;
-	address: FormDataEntryValue | null;
-	apto: FormDataEntryValue | null;
-	city: FormDataEntryValue | null;
-	country: FormDataEntryValue | null;
-	state: FormDataEntryValue | null;
-	cp: FormDataEntryValue | null;
-	phone: FormDataEntryValue | null;
+	name: string;
+	email: string;
+	address: string;
+	apto: string;
+	city: string;
+	country: string;
+	state: string;
+	cp: string;
+	phone: string;
 };
 type ProductInCart = {
 	title: string;
@@ -42,7 +42,17 @@ const initialState: Initial = {
 	dataManga: [],
 	search: '',
 	cart: [],
-	buyer: [],
+	buyer: {
+		name: '',
+		email: '',
+		address: '',
+		apto: '',
+		city: '',
+		country: '',
+		state: '',
+		cp: '',
+		phone: '',
+	},
 };
 
 // Action Types
@@ -73,7 +83,7 @@ const objectReducer = (state: Initial, payload: Payload) => ({
 	},
 	[actionType.addBuyer]: {
 		...state,
-		buyer: [...state.buyer, payload] as Buyer[],
+		buyer: payload as Buyer,
 	},
 });
 
@@ -85,7 +95,8 @@ function reducer(state: Initial, action: Action): Initial {
 function useInitialState(Api: string) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	const { dataManga, cart, buyer } = state;
+	const { dataManga, cart, buyer, search } = state;
+	// Manejadores de estado
 	const handleAddToCart = (item: ProductInCart) => {
 		dispatch({
 			type: actionType.addToCart,
@@ -100,12 +111,15 @@ function useInitialState(Api: string) {
 			payload: newList,
 		});
 	};
-	const handleToSearch = (query: string) => {
-		dispatch({
-			type: actionType.makeASearch,
-			payload: query,
-		});
-	};
+	const handleToSearch = useCallback(
+		(query: string) => {
+			dispatch({
+				type: actionType.makeASearch,
+				payload: query,
+			});
+		},
+		[search]
+	);
 	const handleAddBuyer = (item: Buyer) => {
 		dispatch({
 			type: actionType.addBuyer,
@@ -113,6 +127,12 @@ function useInitialState(Api: string) {
 		});
 	};
 
+	// Filtro de búsquedas
+	const filterMangas = dataManga.filter(item =>
+		item.title.toLowerCase().includes(search.toLowerCase())
+	);
+
+	// Consultas a la Api
 	useEffect(() => {
 		async function query(): Promise<void> {
 			const response = await fetch(Api);
@@ -128,7 +148,7 @@ function useInitialState(Api: string) {
 		});
 	}, [Api]);
 	return {
-		dataManga,
+		filterMangas,
 		cart,
 		buyer,
 		handleAddToCart,

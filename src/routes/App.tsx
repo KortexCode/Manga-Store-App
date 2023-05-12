@@ -11,17 +11,34 @@ import { Layout } from '../containers/Layout';
 function App(): JSX.Element {
 	return (
 		<HashRouter>
-			<Layout>
+			<Switch>
+				<Route path='/'>
+					<Layout>
+						<Switch>
+							<Route exact path='/' component={Home} />
+							<Route path='/page/:page' component={Home} />
+							<Route exact path='/checkout' component={Checkout} />
+							<Route path='/checkout/information' component={Information} />
+							<Route path='/checkout/payment' component={Payment} />
+							<Route path='/checkout/success' component={Success} />
+							<Route component={NotFound} />
+						</Switch>
+					</Layout>
+				</Route>
+			</Switch>
+			{/* <Layout>
+
+			</switch>
 				<Switch>
 					<Route exact path='/' component={Home} />
-					<Route exact path='/page/:page' component={Home} />
+					<Route path='/page/:page' component={Home} />
 					<Route exact path='/checkout' component={Checkout} />
-					<Route exact path='/checkout/information' component={Information} />
-					<Route exact path='/checkout/payment' component={Payment} />
-					<Route exact path='/checkout/success' component={Success} />
-					<Route exact component={NotFound} />
+					<Route path='/checkout/information' component={Information} />
+					<Route path='/checkout/payment' component={Payment} />
+					<Route path='/checkout/success' component={Success} />
+					<Route component={NotFound} />
 				</Switch>
-			</Layout>
+			</Layout> */}
 		</HashRouter>
 	);
 }

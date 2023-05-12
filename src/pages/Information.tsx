@@ -1,31 +1,31 @@
-import React, { useContext, useRef } from 'react';
-import '../styles/Information.scss';
+import React, { useContext } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
+import '../styles/Information.scss';
+
+interface IFormInput {
+	name: string;
+	email: string;
+	address: string;
+	apto: string;
+	city: string;
+	country: string;
+	state: string;
+	cp: string;
+	phone: string;
+}
 
 function Information(): JSX.Element {
 	const { cart, handleAddBuyer } = useContext(AppContext);
+	const { register, handleSubmit } = useForm<IFormInput>();
 	const history = useHistory();
 	if (cart.length <= 0) {
 		history.goBack();
 	}
-	const node = useRef<HTMLFormElement>(null);
-	const formNode = (node.current as HTMLFormElement) || undefined;
-
-	const onPay = () => {
-		const formData = new FormData(formNode);
-		const buyer = {
-			name: formData.get('name'),
-			email: formData.get('email'),
-			address: formData.get('address'),
-			apto: formData.get('apto'),
-			city: formData.get('city'),
-			country: formData.get('country'),
-			state: formData.get('state'),
-			cp: formData.get('cp'),
-			phone: formData.get('phone'),
-		};
-		handleAddBuyer(buyer);
+	const onSubmit: SubmitHandler<IFormInput> = data => {
+		handleAddBuyer(data);
+		history.push('/checkout/payment');
 	};
 
 	// Cálcula el total de los elementos agregados
@@ -37,33 +37,34 @@ function Information(): JSX.Element {
 	return (
 		<section className='Information'>
 			<div className='Information-content'>
-				<div className='Information-head'>
-					<h2>Contact Information:</h2>
-				</div>
-				<section className='Information-form'>
-					<form ref={node}>
-						<input type='text' placeholder='Full name' name='name' />
-						<input type='text' placeholder='Email' name='email' />
-						<input type='text' placeholder='Direction' name='address' />
-						<input type='text' placeholder='apto' name='apto' />
-						<input type='text' placeholder='City' name='city' />
-						<input type='text' placeholder='Country' name='country' />
-						<input type='text' placeholder='State' name='state' />
-						<input type='text' placeholder='Postal Code' name='cp' />
-						<input type='text' placeholder='Phone' name='phone' />
-					</form>
-				</section>
 				<div className='Information-buttons'>
 					<Link to='/checkout' className='Information-back'>
 						<button type='button'>Back</button>
 					</Link>
-
-					<Link to='/checkout/payment' className='Information-next'>
-						<button type='button' onClick={onPay}>
+				</div>
+				<div className='Information-head'>
+					<h2>Contact Information:</h2>
+				</div>
+				<section className='Information-form'>
+					<form onSubmit={handleSubmit(onSubmit)}>
+						<input type='text' placeholder='Full name' {...register('name')} />
+						<input type='text' placeholder='Email' {...register('email')} />
+						<input
+							type='text'
+							placeholder='Direction'
+							{...register('address')}
+						/>
+						<input type='text' placeholder='apto' {...register('apto')} />
+						<input type='text' placeholder='City' {...register('city')} />
+						<input type='text' placeholder='Country' {...register('country')} />
+						<input type='text' placeholder='State' {...register('state')} />
+						<input type='text' placeholder='Postal Code' {...register('cp')} />
+						<input type='text' placeholder='Phone' {...register('phone')} />
+						<button type='submit' className='Information-next'>
 							Pay
 						</button>
-					</Link>
-				</div>
+					</form>
+				</section>
 			</div>
 			<section className='Information-sidebar'>
 				<h3>Order Info:</h3>

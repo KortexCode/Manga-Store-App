@@ -1,13 +1,15 @@
-import React, { ChangeEventHandler, useState } from 'react';
+import React, { ChangeEventHandler, memo } from 'react';
 import { HiSearch } from 'react-icons/hi';
 import '../styles/Search.scss';
 
-type State = string;
-function Search() {
-	const [text, setText] = useState<State>('');
-	console.log(text);
+type Props = {
+	handleToSearch: (arg: string) => void;
+};
+
+const Search = memo((props: Props) => {
+	const { handleToSearch } = props;
 	const onTextChange: ChangeEventHandler<HTMLInputElement> = event => {
-		setText(event.target.value);
+		handleToSearch(event.target.value);
 	};
 
 	return (
@@ -23,6 +25,6 @@ function Search() {
 			</span>
 		</div>
 	);
-}
+});
 
 export { Search };

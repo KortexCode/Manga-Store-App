@@ -8,8 +8,8 @@ import colladImg from '../assets/collad_.jpg';
 import '../styles/Home.scss';
 
 function Home(): JSX.Element {
-	const { dataManga, handleAddToCart } = useContext(AppContext);
-	console.log('first', dataManga);
+	const { filterMangas, handleAddToCart } = useContext(AppContext);
+	console.log('first', filterMangas);
 
 	return (
 		<section className='Home'>
@@ -24,7 +24,7 @@ function Home(): JSX.Element {
 			<PaginationTop />
 			<section className='Home__manga-section'>
 				<div className='Home__manga-container'>
-					{dataManga
+					{filterMangas
 						.filter((item: Datum) => {
 							const censored = item.genres.some((gen): boolean => {
 								if (gen.name === 'Hentai') return true;

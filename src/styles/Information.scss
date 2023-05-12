@@ -31,16 +31,6 @@
 	justify-content: space-between;
 	align-items: center;
 }
-.Information-item .fas {
-	margin: 0 0 0 10px;
-	color: rgba(0, 0, 0, 0.4);
-	cursor: pointer;
-}
-/* .Information-item button {
-  background-color: transparent;
-  border: none;
-  outline: none;
-} */
 .Information-element {
 	display: flex;
 	justify-content: space-between;
@@ -51,6 +41,10 @@
 }
 .Information-element h4 {
 	margin: 0;
+	font-size: $sm;
+	font-weight: 400;
+}
+.Information-element span {
 	font-size: $sm;
 	font-weight: 400;
 }
@@ -87,10 +81,18 @@
 	color: black;
 }
 .Information-next {
-	@extend .Information-back;
+	width: 100%;
+	border: none;
+	border-radius: 8px;
+	padding: 4px;
+	font-size: $md;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-image: $background-buttons;
 }
-.Information-back button,
-.Information-next button {
+.Information-back button {
 	width: 60px;
 	padding: 4px;
 	border: none;
