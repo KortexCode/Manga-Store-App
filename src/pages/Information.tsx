@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { HiArrowLeft } from 'react-icons/hi';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
@@ -39,7 +40,9 @@ function Information(): JSX.Element {
 			<div className='Information-content'>
 				<div className='Information-buttons'>
 					<Link to='/checkout' className='Information-back'>
-						<button type='button'>Back</button>
+						<button type='button'>
+							<HiArrowLeft />
+						</button>
 					</Link>
 				</div>
 				<div className='Information-head'>

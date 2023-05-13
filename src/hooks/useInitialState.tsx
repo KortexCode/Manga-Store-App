@@ -7,6 +7,7 @@ type Initial = {
 	search: string;
 	cart: ProductInCart[];
 	buyer: Buyer;
+	loading: boolean;
 };
 type Buyer = {
 	name: string;
@@ -30,18 +31,26 @@ type ActionType = {
 	addToCart: string;
 	removeFromCart: string;
 	addBuyer: string;
+	loadingState: string;
 };
 type Action = {
 	type: string;
 	payload: Payload;
 };
-type Payload = Datum[] | string | ProductInCart | ProductInCart[] | Buyer;
+type Payload =
+	| Datum[]
+	| string
+	| ProductInCart
+	| ProductInCart[]
+	| Buyer
+	| boolean;
 
 // Estado inicial
 const initialState: Initial = {
 	dataManga: [],
 	search: '',
 	cart: [],
+	loading: true,
 	buyer: {
 		name: '',
 		email: '',
@@ -62,6 +71,7 @@ const actionType: ActionType = {
 	addToCart: 'add to cart',
 	removeFromCart: 'remove from cart',
 	addBuyer: 'add buyer',
+	loadingState: 'loading state',
 };
 
 const objectReducer = (state: Initial, payload: Payload) => ({
@@ -85,6 +95,10 @@ const objectReducer = (state: Initial, payload: Payload) => ({
 		...state,
 		buyer: payload as Buyer,
 	},
+	[actionType.loadingState]: {
+		...state,
+		loading: payload as boolean,
+	},
 });
 
 // Función reductora
@@ -95,7 +109,7 @@ function reducer(state: Initial, action: Action): Initial {
 function useInitialState(Api: string) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	const { dataManga, cart, buyer, search } = state;
+	const { dataManga, cart, buyer, search, loading } = state;
 	// Manejadores de estado
 	const handleAddToCart = (item: ProductInCart) => {
 		dispatch({
@@ -126,6 +140,12 @@ function useInitialState(Api: string) {
 			payload: item,
 		});
 	};
+	const handleLoadingState = (loadingState: boolean) => {
+		dispatch({
+			type: actionType.loadingState,
+			payload: loadingState,
+		});
+	};
 
 	// Filtro de búsquedas
 	const filterMangas = dataManga.filter(item =>
@@ -142,6 +162,7 @@ function useInitialState(Api: string) {
 				type: actionType.queryDataManga,
 				payload: resData.data,
 			});
+			handleLoadingState(false);
 		}
 		query().catch(e => {
 			console.error(e);
@@ -151,6 +172,8 @@ function useInitialState(Api: string) {
 		filterMangas,
 		cart,
 		buyer,
+		loading,
+		handleLoadingState,
 		handleAddToCart,
 		handleRemoveFromCart,
 		handleAddBuyer,
