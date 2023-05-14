@@ -11,7 +11,6 @@ import '../styles/Home.scss';
 function Home(): JSX.Element {
 	const { filterMangas, loading, handleLoadingState, handleAddToCart } =
 		useContext(AppContext);
-	console.log('first', filterMangas);
 
 	return (
 		<>

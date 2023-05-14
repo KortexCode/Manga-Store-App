@@ -1,78 +1,68 @@
 @import './vars';
-.Home{
-    width: 100%;
-    height: auto;
-    &__title-section{
-        width: 100%;
-        height: 350px;
-        margin-top: 60px;
-        position: relative;
-    }
-    &__title-container{
-        width: 100%;
-        height: auto;
-        padding-left: 20px;
-        position: absolute;
-        top:30%;
-        z-index: 1;
-    }
-    &__title{
-        font-family: $font-title-section;
-        font-size: 50px;
-        font-weight: 700;  
-        color:$yellowLight; 
-        text-shadow: 1px  1px 0   black,
-        -1px -1px 0   black,
-         1px -1px 0   black,
-        -1px  1px 0   black,
-         3px  3px 5px #333;
-        z-index: 2;
-    }
-    &__title-message{
-        font-family: $font-title-section;
-        font-size: $xl;
-        font-weight: 500;
-        color: $primary;
-        text-shadow: 1px  1px 0   black,
-        -1px -1px 0   black,
-         1px -1px 0   black,
-        -1px  1px 0   black,
-         3px  3px 5px #333;
-        z-index: 2;
-    }
-    &__title-section-img {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        filter: grayscale(2);
-        object-fit: cover;
-        z-index: 0;
-      
-    }
-    &__manga-section {
-        width: 90%;
-        height: auto;
-        margin: 0 auto; 
-        margin-top: 40px;
-    }
-    &__manga-container{
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 250px);
-        justify-content: center;
-        column-gap: 16px;
-        row-gap: 24px;
-    }
+.Home {
+	width: 100%;
+	height: auto;
+	padding-bottom: 12px;
+	&__title-section {
+		width: 100%;
+		height: 350px;
+		margin-top: 60px;
+		position: relative;
+	}
+	&__title-container {
+		width: 100%;
+		height: auto;
+		padding-left: 20px;
+		position: absolute;
+		top: 30%;
+		z-index: 1;
+	}
+	&__title {
+		font-family: $font-title-section;
+		font-size: 50px;
+		font-weight: 700;
+		color: $yellowLight;
+		text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black,
+			-1px 1px 0 black, 3px 3px 5px #333;
+		z-index: 2;
+	}
+	&__title-message {
+		font-family: $font-title-section;
+		font-size: $xl;
+		font-weight: 500;
+		color: $primary;
+		text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black,
+			-1px 1px 0 black, 3px 3px 5px #333;
+		z-index: 2;
+	}
+	&__title-section-img {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		filter: grayscale(2);
+		object-fit: cover;
+		z-index: 0;
+	}
+	&__manga-section {
+		width: 90%;
+		height: auto;
+		margin: 0 auto;
+		margin-top: 40px;
+	}
+	&__manga-container {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 250px);
+		justify-content: center;
+		column-gap: 16px;
+		row-gap: 24px;
+	}
 }
-.overlay--gray-scale{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.2);
-    z-index: 0;
-   /*  filter: grayscale(100%); */
-
+.overlay--gray-scale {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.2);
+	z-index: 0;
+	/*  filter: grayscale(100%); */
 }
-    
-
-

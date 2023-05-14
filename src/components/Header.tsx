@@ -15,11 +15,11 @@ type Navlink = {
 const navlink: NavMenu = [
 	{
 		name: 'Home',
-		to: '/',
+		to: '/page/1',
 	},
 	{
 		name: 'About Us',
-		to: '/',
+		to: '/page/',
 	},
 ];
 

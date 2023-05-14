@@ -12,7 +12,7 @@ type Props = {
 function Layout(props: Props): JSX.Element {
 	const { children } = props;
 	const [location, setLocation] = useState<string>('');
-
+	console.log(location);
 	const locationPath = useLocation();
 	// Se verifica la url actual para extraer el id de la página
 	const array = locationPath.pathname.split('/');
@@ -23,6 +23,9 @@ function Layout(props: Props): JSX.Element {
 	if (page === 'page' && typeof idPage === 'number') {
 		Api = `https://api.jikan.moe/v4/manga?page=${id}`;
 	} else if (location !== '' && locationPath.pathname !== '/') {
+		Api = `https://api.jikan.moe/v4/manga?page=${location}`;
+	} else if (location !== '' && locationPath.pathname === '/') {
+		console.log('guardado pero devuelto al home');
 		Api = `https://api.jikan.moe/v4/manga?page=${location}`;
 	} else {
 		Api = 'https://api.jikan.moe/v4/manga?page=1';
