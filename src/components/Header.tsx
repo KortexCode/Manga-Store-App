@@ -19,7 +19,7 @@ const navlink: NavMenu = [
 	},
 	{
 		name: 'About Us',
-		to: '/page/',
+		to: '/page/1',
 	},
 ];
 
